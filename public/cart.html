@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Foodie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://png.pngtree.com/thumb_back/fw800/back_our/20190620/ourmid/pngtree-simple-food-delivery-meal-fashion-poster-background-yellow-back-image_158378.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        } 
+
+        
+
+        main {
+            width: 90%;
+            max-width: 600px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+        .cart-item button {
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            padding: 3px 8px; 
+            font-size: 0.8em; 
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cart-item button:hover {
+            background-color: #cc513a;
+        }
+
+        p {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #ff6347;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #cc513a;
+        }
+        .removebtn{
+            width: 100px;
+        }
+        header {
+    background-color: rgba(52, 58, 64, 0.8); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffcc00; 
+}
+.login-buttons {
+    display: flex;
+}
+
+.btn {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn.login {
+    background-color: #28a745; 
+    color: white;
+    cursor: pointer;
+}
+
+.btn.admin {
+    background-color: #17a2b8; 
+    color: white;
+}
+
+.btn.signup {
+    background-color: #007bff; 
+    color: white;
+}
+.no-style {
+    color: inherit; 
+    text-decoration: none; 
+}
+section{
+    padding-left: 29%;
+  } 
+  h1{
+    text-align: center;
+  }
+    </style>
+</head>
+<body>
+    <header>
+        <header>
+            <nav class="navbar">
+                <div class="logo">Foodie</div>
+                <div class="login-buttons">
+                    <button class="btn admin" onclick="history.back()">X</button>
+                </div>
+            </nav>
+        </header>
+    </header>
+    <h1>Your Cart</h1>
+
+    <section>
+    <main>
+        <div id="cart-items"></div>
+        <p>Total Cost: ₹<span id="total-cost">0</span></p>
+        <button onclick="proceedToCheckout()">Proceed to Order</button>
+    </main>
+    </section>
+
+    <script>
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = ''; 
+            let totalCost = 0;
+
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <p>${item.name} - ₹${item.price} x ${item.quantity}</p>
+                    <button class="removebtn" onclick="removeItem(${index})">Remove</button>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                totalCost += item.price * item.quantity;
+            });
+
+            document.getElementById('total-cost').innerText = totalCost;
+        }
+
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); 
+            localStorage.setItem('cart', JSON.stringify(cart)); 
+            loadCart(); 
+        }
+
+        function proceedToCheckout() {
+            window.location.href = "payment.html";
+        }
+
+        loadCart();
+        window.addEventListener('storage', loadCart); 
+    </script>
+</body>
+</html>

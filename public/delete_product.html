@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Product</title>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: #007bff;
+    outline: none;
+    background-color: #fff;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+form > *:not(:last-child) {
+    margin-bottom: 16px;
+}
+.delform{
+    padding-left: 34%;
+}
+
+</style>
+<body>
+    <h2>Delete a Product</h2>
+    <div class="delform">
+    <form id="deleteDishForm">
+        <label for="cuisineType">Cuisine Type:</label>
+        <select id="cuisineType" required>
+            <option value="indian">Indian</option>
+            <option value="chinese">Chinese</option>
+            <option value="italian">Italian</option>
+        </select>
+
+        <label for="dishName">Dish Name:</label>
+        <input type="text" id="dishName" placeholder="Enter dish name" required>
+
+        <button type="submit">Delete Dish</button>
+    </form></div>
+<script>
+    document.getElementById("deleteDishForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const cuisineType = document.getElementById("cuisineType").value;
+    const dishName = document.getElementById("dishName").value;
+
+    const dishes = JSON.parse(localStorage.getItem("dishes")) || [];
+
+    const dishIndex = dishes.findIndex(dish => dish.cuisineType === cuisineType && dish.name.toLowerCase() === dishName.toLowerCase());
+
+    if (dishIndex !== -1) {
+        dishes.splice(dishIndex, 1);
+        localStorage.setItem("dishes", JSON.stringify(dishes));
+
+        alert(`Dish "${dishName}" from ${cuisineType} cuisine has been deleted.`);
+    } else {
+        alert(`Dish "${dishName}" not found in ${cuisineType} cuisine.`);
+    }
+
+    document.getElementById("deleteDishForm").reset();
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Orders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    #singleDishOrders, #bulkDishOrders {
+        width: 100%;
+        max-width: 600px;
+        margin-bottom: 30px;
+    }
+
+    .order-card {
+        background-color: #fff;
+        padding: 15px 20px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .order-card h3 {
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+
+    .order-card p {
+        margin: 5px 0;
+        color: #555;
+    }
+</style>
+<body>
+    <h2>Your Orders</h2>
+
+    <h3>Single Dish Orders</h3>
+    <div id="singleDishOrders"></div>
+
+    <h3>Bulk Dish Orders</h3>
+    <div id="bulkDishOrders"></div>
+
+<script>
+   function displayOrders() {
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
+    const singleDishOrdersContainer = document.getElementById("singleDishOrders");
+    const bulkDishOrdersContainer = document.getElementById("bulkDishOrders");
+
+    // Clear existing content in both containers
+    singleDishOrdersContainer.innerHTML = '';
+    bulkDishOrdersContainer.innerHTML = '';
+
+    // Create a card for each order
+    orders.forEach((order, index) => {
+        const orderCard = document.createElement("div");
+        orderCard.className = "order-card";
+
+        if (Array.isArray(order.dishes)) {
+            // Bulk order (from payment.html)
+            const dishesDisplay = order.dishes.join(', ');
+            orderCard.innerHTML = `
+                <p><strong>Name:</strong> ${order.name}</p>
+                <p><strong>Address:</strong> ${order.address}</p>
+                <p><strong>Dishes:</strong> ${dishesDisplay}</p>
+                <p><strong>Total Amount:</strong> ₹${order.totalAmount}</p>
+                <button onclick="removeOrder(${index})">Remove Order</button>
+            `;
+            bulkDishOrdersContainer.appendChild(orderCard);
+        } else {
+            // Single dish order (from paymentorder.html)
+            orderCard.innerHTML = `
+                <p><strong>Name:</strong> ${order.name}</p>
+                <p><strong>Address:</strong> ${order.address}</p>
+                <p><strong>Dish:</strong> ${order.dishName}</p> <!-- Change to order.dishName -->
+                <p><strong>Total Amount:</strong> ₹${order.totalAmount}</p>
+                <button onclick="removeOrder(${index})">Remove Order</button>
+            `;
+            singleDishOrdersContainer.appendChild(orderCard);
+        }
+    });
+}
+
+
+    // Function to remove an order
+    function removeOrder(index) {
+        const orders = JSON.parse(localStorage.getItem("orders")) || [];
+        orders.splice(index, 1); // Remove the order at the specified index
+        localStorage.setItem("orders", JSON.stringify(orders)); // Update localStorage
+        displayOrders(); // Refresh the displayed orders
+    }
+
+    window.onload = displayOrders;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #fff8f0; /* Light beige color */
+    color: #333;
+    background-image: url('https://media.gettyimages.com/id/664647131/pt/foto/cropped-image-of-hands-preparing-food-on-table.jpg?s=612x612&w=0&k=20&c=2IS7EWgoTnYqxy_wRK4f_lZWu-c_n2_KQ7FWdwg1nj8='); /* Food-related background image */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Header and Navigation Bar */
+header {
+    background-color: rgba(52, 58, 64, 0.8); /* Dark gray with transparency */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffcc00; /* Gold color on hover */
+}
+
+/* Login Buttons */
+.login-buttons {
+    display: flex;
+}
+
+.btn {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn.login {
+    background-color: #28a745; /* Green */
+    color: white;
+    cursor: pointer;
+}
+
+.btn.admin {
+    background-color: #17a2b8; /* Blue */
+    color: white;
+}
+
+.btn.signup {
+    background-color: #007bff; /* Blue */
+    color: white;
+}
+.no-style {
+    color: inherit; /* Keeps the text color the same as surrounding text */
+    text-decoration: none; /* Removes underline */
+}
+
+/* Optional: Hover effect */
+.no-style:hover {
+    color: #555; /* Changes color on hover if you like */
+    text-decoration: underline;
+}
+
+
+.btn.login:hover {
+    background-color: #218838; 
+}
+
+.btn.admin:hover {
+    background-color: #138496; /* Darker blue */
+}
+
+.btn.signup:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+/* Hero Section */
+.hero {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for contrast */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero .logo-hero {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.hero .btn.explore {
+    background-color: #eac42f; /* Gold */
+    color: #333;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero .btn.explore:hover {
+    background-color: #e6b800; /* Darker gold */
+}
+
+/* Featured Products Section */
+.featured-products {
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.featured-products h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill , minmax(250px,  1fr));
+    gap: 20px;
+    padding: 20px;
+    padding-left: 300px;
+}
+
+.product {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 280px; /* Set a specific width for product images */
+    height: 200px; /* Set a specific height for product images */
+    margin: 10px auto; /* Add some margin for better spacing */
+    border-radius: 16px; /* Add a slight border radius for a softer look */
+}
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+    color: #007bff; /* Blue */
+}
+
+.product p {
+    padding: 0 10px;
+    color: #555;
+}
+
+.product .btn.order {
+    background-color: #007bff; /* Blue */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product .btn.order:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .product {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 30vh;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .product {
+        margin-bottom: 10px;
+    }
+}
+.welcome{
+    padding-top: 5px;
+    color: #f9f9f9;
+}
+.cartlogo{
+    width: 45px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.cart-button{
+    padding: 0px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}

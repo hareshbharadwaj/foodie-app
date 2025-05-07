@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Foodie - Modern Cuisine</title>
+    <link href="home.css" rel="stylesheet">
+</head>
+<!-- <style>
+    /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #fff8f0; /* Light beige color */
+    color: #333;
+    background-image: url('https://media.gettyimages.com/id/664647131/pt/foto/cropped-image-of-hands-preparing-food-on-table.jpg?s=612x612&w=0&k=20&c=2IS7EWgoTnYqxy_wRK4f_lZWu-c_n2_KQ7FWdwg1nj8='); /* Food-related background image */
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* Header and Navigation Bar */
+header {
+    background-color: rgba(52, 58, 64, 0.8); /* Dark gray with transparency */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    color: white;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffcc00; /* Gold color on hover */
+}
+
+/* Login Buttons */
+.login-buttons {
+    display: flex;
+}
+
+.btn {
+    padding: 10px 15px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn.login {
+    background-color: #28a745; /* Green */
+    color: white;
+    cursor: pointer;
+}
+
+.btn.admin {
+    background-color: #17a2b8; /* Blue */
+    color: white;
+}
+
+.btn.signup {
+    background-color: #007bff; /* Blue */
+    color: white;
+}
+.no-style {
+    color: inherit; /* Keeps the text color the same as surrounding text */
+    text-decoration: none; /* Removes underline */
+}
+
+/* Optional: Hover effect */
+.no-style:hover {
+    color: #555; /* Changes color on hover if you like */
+    text-decoration: underline;
+}
+
+
+.btn.login:hover {
+    background-color: #218838; 
+}
+
+.btn.admin:hover {
+    background-color: #138496; /* Darker blue */
+}
+
+.btn.signup:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+/* Hero Section */
+.hero {
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black for contrast */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.hero .logo-hero {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Text shadow for better readability */
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.hero .btn.explore {
+    background-color: #eac42f; /* Gold */
+    color: #333;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero .btn.explore:hover {
+    background-color: #e6b800; /* Darker gold */
+}
+
+/* Featured Products Section */
+.featured-products {
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.featured-products h2 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill , minmax(250px,  1fr));
+    gap: 20px;
+    padding: 20px;
+    padding-left: 300px;
+}
+
+.product {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    transition: transform 0.3s;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+.product img {
+    width: 280px; /* Set a specific width for product images */
+    height: 200px; /* Set a specific height for product images */
+    margin: 10px auto; /* Add some margin for better spacing */
+    border-radius: 16px; /* Add a slight border radius for a softer look */
+}
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 1.5em;
+    color: #007bff; /* Blue */
+}
+
+.product p {
+    padding: 0 10px;
+    color: #555;
+}
+
+.product .btn.order {
+    background-color: #007bff; /* Blue */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product .btn.order:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        height: 50vh;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .product {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 30vh;
+    }
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .product {
+        margin-bottom: 10px;
+    }
+}
+.welcome{
+    padding-top: 5px;
+    color: #f9f9f9;
+}
+.cartlogo{
+    width: 45px;
+    height: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.cart-button{
+    padding: 0px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+</style>     -->
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Foodie</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#featured">Featured</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="login-buttons">
+                            
+                <div id="welcome-message" class="welcome"></div> 
+                <button class="btn login" id="loginbtn">User Login</button>
+                <button class="btn admin" onclick="adminlog()">Admin</button>
+                <div class="cart-button" id="cartbtn" onclick="redirectToCart()""> 
+                    <button ><img  class="cartlogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAMAAzAMBIgACEQEDEQH/xAAcAAEBAAIDAQEAAAAAAAAAAAAAAQIHAwYIBAX/xAA9EAACAQIDAwkFBQcFAAAAAAAAAQIDBAUGEQcxURITFyFBVYGRkxUiYXHSFDJCVqEII1KSscHRFjRUYoL/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A3MAZJAEjJAySAiRkkNCoAgCgQFAAAugEBdBoBAUgEBQBAABi0YtHIRoDjaMWjNoAcYLJEAySMgWKAqRkkEgAKAABUAGgAAAAAAAAAAEKAICkAgKQCNGLRmRoDjaMWjMgFSM0jFGYAqIVACgAAAAKQagUAAAAAAAAhSAAABAUgEDKyAYNEM2jFoDJFAAoQKAAAGoduGaMyYDeYfQwm5qWVjWpSc69OK1lPX7rk09OrhxNXLaNm9LRZkutPi4v+x6rr21C5jyLilCrHhOKaPjlgOET+9hlo/nRj/gDzHHaPnBvSOY7tv5Q/wAG6djWb7zNOD3dLFq0at/ZVIxlUUVF1ISWsW0urXVSXVwOfaXlHDLnJWKuww63pXVKjz1OdKklLWD5Wi046aeJqzYNi6sc7qzlJ81iNvKlp2cuPvxb8FNeIHpAAAAAAAAAAACDUoEDAAgAYEI0UAACgCkRQBSIoAAAcVenGtRnSn1xnFxfyZ5Fu4XeVs0142snRucOu5c1Lfpo/d/TQ9fnmvbnhXs/PM7mMUoX1GNZfGS6pf0QHxdK2c+9I+jEdK2c+9I+jE6WAO6dK2c+9I+jEdK2c+9I+jE6WAO6dK2c+9I+jEdK2c+9I+jE6WAO6dK2c+9I+jEdK2c+9I+jE6WAO/4btgzXZ3Mat3Xo3lFdc6M6aXKXbo1uPRmGXtPEcOtr6jqqVxSjVgnwktf7nkfLOD1MwZhsMKpr/c1lGb4RXXJ+R6+oUYW9CnRpRShTioxS7EgOQhSAGQpAICkAFIUC9gHYACKRFAAAAai/aJwt1sDw3FIR1dtculUaX4ZxejfjFL/0bdOt7RMJ9t5KxewhByqzt3Oklvc4e/FecUB5OBIvlLlcSgAAAAAAANPdGLbe5LtfADcP7PWBc7d4hj1WPu0V9moPT8T65fpp5m9Drmz/AAL/AE5lHDsNmv38KfOXHxqy96Xk20vgkdjAAEAIhUQAyFZGAKQqAvYB2AAikRQAAAEklJNPc+ooA8f5swv2LmjFMOUVGNvczUEtyg+uP6NH5Rs7b9hX2TNttfxWkL230ei/FF6fqjn2dbM8Ezhl2GJV8Rv6NxGrKnVp0nDkpp71rF70BqoG/egjAe9cT86f0joIwHvXE/On9IGggb96CMB71xPzp/SOgjAe9cT86f0gaCO5bJcB9vZ1tFUi5W1k/tNbq6vd+6v5tH4M2X0E4B3rif8ANT+k7fkrJGFZMo14YfKrVqV2ucr1pJyaW5dXYB2kBbgAIUgBEKiAGQrIAKQoBFIUAikKAAAAAAav/aAwz7VlCjfxTc7K5i2+EZe63/Q0lgObsby7SrUsFxWdrTrSU6kYxhLV6aa+8meuatKFaDhVhCcHvjJap+B1bN2Zsr5SoxlitKhz1Ra07elRjKpJcdOxfFgaD6UM5fmGr6VH6R0oZy/MNX0qP0m2sC2qZMxW9ha17CWHyqNRhO6oQ5Mm+zWLenibEjYWMlqrO2a481EDzD0oZy/MNX0qP0jpQzl+YavpUfpPT/s+y/4dv6UT8DNeYMs5Uto1sWp28Zz15ujCipTn8lw+IHn/AKUM5fmGr6VH6T68J2o519oUFTxKeITc0lauhB87/wBfdin5Gy8I2s5Mv7uNC5w6pYRl1KtcW8OR4uLenibKt7e0jpVtqNBKSWk6cUtV812Ac1GUp0YSqR5E5RTlHg+BmFuAAhSACFZABAAAIigUpABQgAKAAAAAHknP1/cYjnPGa11JynG8q0YJ/hhCTjFb+C82z1q9zNL7Utlt/iOK1sby3CNepcPlXFo5qEuXppyo69XX2oDSaXZxPT2xq/ucQ2f4dUvJSnUpOpRjOW+UIzaj5LReBpnBdlObMTvYUbnD5Yfb6/vLi5lH3V8Iptyf6HorLmD2uAYLaYVYxaoW1Pkx13t7238W234gfpM8rbVL+4v8+4rK5k3zFVUacX+GKS6l5nqlrU1BtY2X3mM4jLG8uqFS5qJK5tZSUHNrqUot9WvFPTcBorenqup7z0nsNvrm9yFRVzJzVvXqUacn/Aty8NTUOEbK834jdxozwx2NPlaTr3U4qMVx0Tbfgj0TlTALXLWA2uFWblKFGPvVJb6kn96T+bA/XAIAADAEBAABi2ATMjjRmmBSkKBQQoApABQQoAmiKAJoXQAAAAJyUUEAAAAQAAyAAGYNlkYgCowTMgORMGKZkmBUCADJDUxDQF1Gq4nHySOMgOXlR4k5ceJwOEjF05dgH085HiOcjxPl5qp/EwqU1vYH1KceJeUuJ8ypyM1CQHNykXU4lGRklIDPUhABSAMAYsrZg2AYI2YtgQzTMAmByFTMUygciYMNTJMClIAKCFAAAAAAAAAAgAAAAYthyMdQDG4jehGwI2QAD//Z"></button>
+                </div>
+            </div>
+        </nav>
+        
+    </header>
+
+    <section class="hero" id="home">
+        <img src="https://i.etsystatic.com/28391359/r/il/e9b95f/3375661833/il_340x270.3375661833_81i2.jpg" alt="Foodie Logo" class="logo-hero">
+        <h1>Discover Delicious Cuisines</h1>
+        <p>Explore a variety of dishes from around the world. </p>
+        <button id="exploreButton" class="btn explore" >Explore Now</button>
+    </section>
+
+    <section class="featured-products" id="featured">
+        <h2>Featured Cuisines</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="https://media.istockphoto.com/id/177043240/photo/indian-butter-chicken-curry.jpg?s=612x612&w=0&k=20&c=GnqnIWq99zDdjmOWQg0L7p3eKJTQO_bxnJTVbf8PlpM=" alt="Indian Cuisines">
+                <h3>Indian Cuisines</h3>
+                <p>"A vibrant tapestry of spices, flavors, and traditions from every corner of India."</p>
+                <button class="btn order" id="ordernowbtn"><a href="indiandish.html" class="no-style">Explore</a></button>
+            </div>
+            <div class="product">
+                <img src="https://www.usmaniachinese.com/wp-content/uploads/2020/01/Mama_Chang_Signature_Dishes.6.jpg" alt="Chinese Cuisines">
+                <h3>Chinese Cuisines</h3>
+                <p>"A harmonious balance of flavors, textures, and vibrant colors crafted through ancient culinary traditions."</p>
+                <button class="btn order" id="ordernowbtn"><a href="chinesedish.html" class="no-style">Explore</a></button>
+            </div>
+            <div class="product">
+                <img src="https://fondue.bg/wp-content/uploads/2019/09/italiancuisine.jpg" alt="Italian Cuisines">
+                <h3>Italian Cuisines</h3>
+                <p>"A celebration of fresh ingredients, simple elegance, and rich, comforting flavors that warm the heart."</p>
+                <button class="btn order" id="ordernowbtn"><a href="italiandish.html" class="no-style">Explore</a></button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Foodie Ltd. All rights reserved.</p>
+        <a href="privacy.html" style="color: whitesmoke;">Privacy&Policy</a>
+    </footer>
+    <script>
+              function adminlog(){
+                window.location.href='adminlogin.html';
+              }     
+
+
+function redirectToCart(){
+    window.location.href = 'cart.html'; 
+}
+
+
+        document.getElementById("exploreButton").addEventListener("click", function() {
+            document.querySelector("#featured").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+   
+       
+    document.addEventListener("DOMContentLoaded", function() {
+    fetch('/api/check-login-status',{
+    credentials: 'same-origin' 
+})
+        .then(response => response.json())
+        .then(data => {
+            const loginBtn = document.getElementById('loginbtn');
+            const welcomeMessage = document.getElementById('welcome-message') || document.createElement('span');
+            const cartbtn=document.getElementById('cartbtn')
+
+            if (!welcomeMessage) {
+        welcomeMessage = document.createElement('span');
+        welcomeMessage.id = 'welcome-message'; 
+        welcomeMessage.style.marginRight = '15px'; 
+        loginBtn.parentNode.insertBefore(welcomeMessage, loginBtn); 
+    }
+           
+            if (data.isLoggedIn) {
+            welcomeMessage.innerText = `Welcome ${data.username}!!!`;
+            loginbtn.innerText = 'Logout';
+            loginbtn.onclick = function() {
+                localStorage.removeItem('cart'); 
+                fetch('/logout', { method: 'POST' })
+                    .then(() => window.location.reload());}
+            cartbtn.style.display="block"
+        }
+            else {
+                loginBtn.innerText = 'User Login';
+                loginBtn.onclick = function() {
+                    window.location.href = 'login.html';     
+                };
+                welcomeMessage.innerText = '';
+                cartbtn.style.display="none" 
+            }
+
+            function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+            }
+            const message = getQueryParam('message');
+            const message1 = getQueryParam('message1');
+
+            
+        
+if (message) {
+    alert(message);      
+    window.history.replaceState({}, document.title, window.location.pathname);
+}
+if (message1) {
+    alert(message1);      
+    window.history.replaceState({}, document.title, window.location.pathname);
+}
+        })
+        .catch(error => console.error('Error checking login status:', error));
+});
+
+        
+        
+
+      
+    </script>
+</body>
+</html>

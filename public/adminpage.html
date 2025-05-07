@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            height: 100vh;
+            position: fixed;
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #444;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+        }
+        .sidebar button:hover {
+            background-color: #555;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            flex-grow: 1;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); 
+            z-index: 1;
+        }
+        .iframe-container {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            background: transparent;
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <button onclick="loadPage('add_product.html')">Add Product</button>
+        <button onclick="loadPage('delete_product.html')">Delete Product</button>
+        <button onclick="loadPage('view_orders.html')">View Orders</button>
+        <button onclick="loadPage('view_customers.html')">View Customers</button>
+         <button  onclick="logout()">logout</button>
+    </div>
+
+    <div class="content" id="contentContainer">
+        <div class="overlay"></div>
+        
+        <iframe id="contentFrame" class="iframe-container"></iframe>
+    </div>
+    
+
+    <script>
+function logout() {
+    fetch('/admin-logout', {
+        method: 'POST',
+        credentials: 'include' 
+    })
+    .then(() => {
+        sessionStorage.removeItem('isAdminLoggedIn');
+        window.location.href = '/?message=Successfully logged out'; 
+    })
+    .catch(error => console.error('Error logging out:', error));
+}
+
+
+        window.onload = function() {
+            if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
+                document.getElementById('logoutButton').style.display = 'inline-block';
+            } else {
+                document.getElementById('logoutButton').style.display = 'none'; 
+            }
+        };
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            sessionStorage.setItem('isAdminLoggedIn', 'false'); 
+            window.location.href = 'login.html'; 
+        });
+
+        function loadPage(page) {
+            const iframe = document.getElementById('contentFrame');
+            iframe.src = page;
+
+            iframe.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
