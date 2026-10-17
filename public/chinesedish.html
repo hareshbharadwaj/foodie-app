@@ -392,8 +392,8 @@ function displayDishes() {
             <h3>${dish.name}</h3>
             <p>Price: ₹${dish.price}</p>
             <p>Rating: ${'⭐'.repeat(dish.ratingCount)}</p>
-            <button class="btn order">Order</button>
-            <button class="btn add-to-cart">Add to Cart</button>
+            <button class="btn order" onclick="handleOrderClick('${dish.name}',${dish.price})" id="ordernowbtn">Order</button>
+            <button class="btn add-to-cart" onclick="handleAddToCartClick('${dish.name}',${dish.price})">Add to Cart</button>
         `;
         dishContainer.appendChild(dishCard);
     });
