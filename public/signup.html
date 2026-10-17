@@ -182,17 +182,13 @@ header {
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             
-            <button type="submit" onclick="login()">Sign Up</button>
+            <button type="submit">Sign Up</button>
         </form>
         <p>Already have an account? <a href="login.html">Sign In</a></p>
     </div></section>
     <script>
-    function login(){
-             const username = document.getElementById("username").value;
-             const password = document.getElementById("password").value;
-              localStorage.setItem("username", username);
-            localStorage.setItem("email", email);}
-
+        // Account creation is handled by the server (POST /signup).
+        // This script only surfaces the redirect message.
         function getQueryParam(param) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(param);

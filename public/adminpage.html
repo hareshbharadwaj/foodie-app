@@ -82,7 +82,7 @@
     <div class="content" id="contentContainer">
         <div class="overlay"></div>
         
-        <iframe id="contentFrame" class="iframe-container"></iframe>
+        <iframe id="contentFrame" class="iframe-container" title="Admin panel content"></iframe>
     </div>
     
 
@@ -100,17 +100,10 @@ function logout() {
 }
 
 
+        // Load the first admin section by default.
         window.onload = function() {
-            if (sessionStorage.getItem('isAdminLoggedIn') === 'true') {
-                document.getElementById('logoutButton').style.display = 'inline-block';
-            } else {
-                document.getElementById('logoutButton').style.display = 'none'; 
-            }
+            loadPage('add_product.html');
         };
-        document.getElementById('logoutButton').addEventListener('click', function() {
-            sessionStorage.setItem('isAdminLoggedIn', 'false'); 
-            window.location.href = 'login.html'; 
-        });
 
         function loadPage(page) {
             const iframe = document.getElementById('contentFrame');
